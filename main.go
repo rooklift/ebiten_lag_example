@@ -32,6 +32,7 @@ func main() {
 	g := NewGame(w, h)
 	ebiten.SetFullscreen(true)
 	ebiten.SetVsyncEnabled(true)
+	ebiten.SetMaxTPS(240)
 
 	err := ebiten.RunGame(g)
 	if err != nil && err != USER_QUIT {
@@ -79,16 +80,16 @@ func (self *Game) Draw(screen *ebiten.Image) {
 func (self *Game) Update() error {
 
 	if ebiten.IsKeyPressed(ebiten.KeyD) {
-		self.shipx += 8
+		self.shipx += 2
 	}
 	if ebiten.IsKeyPressed(ebiten.KeyA) {
-		self.shipx -= 8
+		self.shipx -= 2
 	}
 	if ebiten.IsKeyPressed(ebiten.KeyS) {
-		self.shipy += 8
+		self.shipy += 2
 	}
 	if ebiten.IsKeyPressed(ebiten.KeyW) {
-		self.shipy -= 8
+		self.shipy -= 2
 	}
 
 	if ebiten.IsKeyPressed(ebiten.KeySpace) {

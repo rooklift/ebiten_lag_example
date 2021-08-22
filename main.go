@@ -41,7 +41,6 @@ func main() {
 }
 
 type Game struct {
-	image *ebiten.Image
 	width int
 	height int
 	shipx float64
@@ -51,7 +50,6 @@ type Game struct {
 
 func NewGame(width int, height int) *Game {
 	ret := new(Game)
-	ret.image = ebiten.NewImage(width, height)
 	ret.width = width
 	ret.height = height
 	ret.shipx = 64
@@ -69,9 +67,7 @@ func (self *Game) Draw(screen *ebiten.Image) {
 	opts := new(ebiten.DrawImageOptions)
 	opts.GeoM.Translate(self.shipx - (float64(sprite_width) / 2), self.shipy - (float64(sprite_height) / 2))
 
-	self.image.Clear()
-	self.image.DrawImage(sprite, opts)
-	screen.DrawImage(self.image, nil)
+	screen.DrawImage(sprite, opts)
 
 	ebitenutil.DebugPrint(screen, fmt.Sprintf("TPS: %0.2f   FPS: %0.2f   Vsync: %v (SPACE to toggle)   WASD to move",
 		ebiten.CurrentTPS(), ebiten.CurrentFPS(), ebiten.IsVsyncEnabled()))

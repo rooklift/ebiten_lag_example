@@ -30,6 +30,8 @@ func main() {
 	// Start loop...
 
 	g := NewGame(w, h)
+
+	ebiten.SetWindowSize(w * 2, h * 2)
 	ebiten.SetFullscreen(true)
 	ebiten.SetVsyncEnabled(true)
 	ebiten.SetMaxTPS(240)
@@ -91,6 +93,11 @@ func (self *Game) Update() error {
 	if ebiten.IsKeyPressed(ebiten.KeySpace) {
 		if self.cd == false {
 			ebiten.SetVsyncEnabled(!ebiten.IsVsyncEnabled())
+			self.cd = true
+		}
+	} else if ebiten.IsKeyPressed(ebiten.KeyEnter) {
+		if self.cd == false {
+			ebiten.SetFullscreen(!ebiten.IsFullscreen())
 			self.cd = true
 		}
 	} else {

@@ -32,7 +32,6 @@ func main() {
 	g := NewGame(w, h)
 
 	ebiten.SetWindowSize(w * 2, h * 2)
-	ebiten.SetFullscreen(true)
 	ebiten.SetVsyncEnabled(true)
 	ebiten.SetMaxTPS(240)
 
